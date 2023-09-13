@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+
+\usepackage[paper=letterpaper, margin=0.5in, footskip=0.25in]{geometry}
+% margins can easily be changed in the line above;
+% footskip sets the position of page numbers
+\usepackage{amsmath}                % for math enhancements
+\usepackage{datetime}               % for custom date/time format
+\usepackage{amssymb}                % for extra math symbols
+\usepackage{titlesec}               % for custom title/section/subsection formats
+\usepackage{enumitem}               % for numbered lists
+\usepackage{graphicx}               % for including images and other graphics
+\usepackage{hyperref}               % for hyperlinks
+\usepackage[skip=0.15em]{caption}   % for figure captions
+\usepackage[font=normal]{subfig}    % for figures and subfigures
+\usepackage{xcolor}                 % for coloring and highlighting text
+\usepackage{pgfplots}               % for slope fields
+\usetikzlibrary{calc}               % for slope fields
+\pgfplotsset{compat=1.18}           % for slope fields
+\usepackage{indentfirst}            % indent first paragraph after a heading
+\usepackage{setspace}               % for 1.25 spacing
+\usepackage{chngcntr}               % for managing equation numbering
+
+\counterwithin*{equation}{subsection}
+
+\hypersetup{
+	colorlinks   = true,    % colored links instead of boxes
+	urlcolor     = blue,    % color for external hyperlinks
+	linkcolor    = blue,    % color for internal links
+	citecolor    = red      % color for citations
+}
+
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
+% the line above sets the month and year automatically
+% if you don't like this format, you can easily change it
+
+\makeatletter
+\def\@maketitle{
+	\newpage
+	\vspace*{-\topskip}
+	\begingroup\centering
+	\let \footnote \thanks
+	\hrule height \z@
+	{\fontsize{16}{19.2} \@title \par}
+	\vskip 0.25em 
+	{\large
+		\lineskip 0.5em 
+		\begin{tabular}[t]{c}
+			\@author
+		\end{tabular}\par}
+	\vskip 0.25em 
+	{\large \monthyeardate\today}
+	\par\endgroup
+	\vskip 1em
+}
+\makeatother
+
+\titleformat{\section}{\normalfont\scshape}{\textbf\thesection}{0em{\textbf{ – }}}{\textbf}
+\titleformat{\subsection}{\normalfont\scshape}{\textit\thesubsection}{0em{\textit{ – }}}{\textit}
+% if you don't like the italicized subsections, change all the textit commands
+% in the line above to textbf or whatever else you prefer
+\titlespacing*{\section}{0pt}{1.5em}{0.5em}
+\titlespacing*{\subsection}{0pt}{1em}{0.33em}
+
+\title{\textbf{Differential Equations Notes}}
+\author{Erk Sampat}
