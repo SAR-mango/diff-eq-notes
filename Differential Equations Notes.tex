@@ -354,13 +354,14 @@
 				xmax=\xmax+0.5,
 				ymin=\ymin-0.5,
 				ymax=\ymax+0.5]
+				\addplot[color=magenta]{0};
 				\foreach \n in {\ymin,...,\ymax}
 				\addplot[blue,quiver={u={1/sqrt(1+(y^2 - y - 6)^2)},v={(y^2 - y - 6)/sqrt(1+(y^2 - y - 6)^2)},scale arrows=0.5},->,samples=2*\xmax + 1,]{\n};
 			\end{axis}
 		\end{tikzpicture}
 	\end{center}
 	
-	Notice that the slope is zero at $y = 3$ and $y = -2$
+	Notice that the slope is zero at $y = 3$ and $y = -2$.
 	
 	\begin{center}
 		\begin{tikzpicture}
