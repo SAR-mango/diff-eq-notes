@@ -337,7 +337,6 @@
 		\begin{tikzpicture}[scale=1.625]
 			\def\xmin{-5} \def\xmax{5}
 			\def\ymin{-2} \def\ymax{2}
-			\def\eqtn{(y+1.5)*(y-1.5)*(y+1)*(y+1)}
 			\begin{axis}[
 				axis x line=center,
 				axis y line=center,
@@ -356,7 +355,7 @@
 				ymin=\ymin-0.25,
 				ymax=\ymax+0.25]
 				\foreach \n in {\ymin,-1.75,...,\ymax}
-				\addplot[blue,quiver={u={1/sqrt(1+(\eqtn)^2)},v={(\eqtn)/sqrt(1+(\eqtn)^2)},scale arrows=0.5},->,samples=2*\xmax + 1,]{\n};
+				\addplot[blue,quiver={u={1/sqrt(1+((y+1.5)*(y-1.5)*(y+1)*(y+1))^2)},v={((y+1.5)*(y-1.5)*(y+1)*(y+1))/sqrt(1+((y+1.5)*(y-1.5)*(y+1)*(y+1))^2)},scale arrows=0.5},->,samples=2*\xmax + 1,]{\n};
 			\end{axis}
 		\end{tikzpicture}
 	\end{center}
