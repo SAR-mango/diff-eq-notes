@@ -354,7 +354,7 @@
 				xmax=\xmax+0.5,
 				ymin=\ymin-0.5,
 				ymax=\ymax+0.5]
-				\foreach \n in {\ymin,\ymin+0.5,...,\ymax}
+				\foreach \n in {\ymin,-4.5,...,\ymax}
 				\addplot[blue,quiver={u={1/sqrt(1+((-4 + y^2)*((y+1)^2))^2)},v={((-4 + y^2)*((y+1)^2))/sqrt(1+((-4 + y^2)*((y+1)^2))^2)},scale arrows=0.35},->,samples=2*\xmax + 1,]{\n};
 			\end{axis}
 		\end{tikzpicture}
