@@ -356,7 +356,7 @@
 				ymax=\ymax+0.5]
 				\addplot[color=magenta]{3};
 				\addplot[color=magenta]{-2};
-				\addplot[color=magenta,samples=1000]{((-2)*e^(1+5*x)-3)/(e^(1+5*x)-1)};
+				\addplot[color=magenta,samples=1000,domain=-10:0]{((-2)*e^(3+5*x)-3)/(e^(3+5*x)-1)};
 				\foreach \n in {\ymin,...,\ymax}
 				\addplot[blue,quiver={u={1/sqrt(1+(y^2 - y - 6)^2)},v={(y^2 - y - 6)/sqrt(1+(y^2 - y - 6)^2)},scale arrows=0.5},->,samples=2*\xmax + 1,]{\n};
 			\end{axis}
