@@ -355,7 +355,7 @@
 				ymin=\ymin-0.25,
 				ymax=\ymax+0.25]
 				\foreach \n in {\ymin,-1.75,...,\ymax}
-				\addplot[blue,quiver={u={1/sqrt(1+((-2.25 + y^2)*((y+1)^2))^2)},v={((-2.25 + y^2)*((y+1)^2))/sqrt(1+((-2.25 + y^2)*((y+1)^2))^2)},scale arrows=0.25},->,samples=2*\xmax + 1,]{\n};
+				\addplot[blue,quiver={u={1/sqrt(1+((-2.25+y^2)*((y+1)^2))^2)},v={((-2.25+y^2)*((y+1)^2))/sqrt(1+((-2.25+y^2)*((y+1)^2))^2)},scale arrows=0.35},->,samples=2*\xmax + 1,]{\n};
 			\end{axis}
 		\end{tikzpicture}
 	\end{center}
