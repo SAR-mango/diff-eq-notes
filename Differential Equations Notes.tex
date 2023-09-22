@@ -336,7 +336,7 @@
 	\begin{center}
 		\begin{tikzpicture}[scale=1.625]
 			\def\xmin{-5} \def\xmax{5}
-			\def\ymin{-3} \def\ymax{3}
+			\def\ymin{-2} \def\ymax{2}
 			\begin{axis}[
 				axis x line=center,
 				axis y line=center,
@@ -354,8 +354,8 @@
 				xmax=\xmax+0.5,
 				ymin=\ymin-0.5,
 				ymax=\ymax+0.5]
-				\foreach \n in {\ymin,-2.66666667,...,\ymax}
-				\addplot[blue,quiver={u={1/sqrt(1+((-4 + y^2)*((y+1)^2))^2)},v={((-4 + y^2)*((y+1)^2))/sqrt(1+((-4 + y^2)*((y+1)^2))^2)},scale arrows=0.3},->,samples=2*\xmax + 1,]{\n};
+				\foreach \n in {\ymin,-1.75,...,\ymax}
+				\addplot[blue,quiver={u={1/sqrt(1+((-2.25 + y^2)*((y+1)^2))^2)},v={((-2.25 + y^2)*((y+1)^2))/sqrt(1+((-2.25 + y^2)*((y+1)^2))^2)},scale arrows=0.3},->,samples=2*\xmax + 1,]{\n};
 			\end{axis}
 		\end{tikzpicture}
 	\end{center}
