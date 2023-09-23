@@ -356,8 +356,8 @@ Let's look at the slope field of $y' = (y^{2} - 1.21)(y + 1)^{2}$ below:
 			ymin=\ymin-0.1,
 			ymax=\ymax+0.1]
 			%\addplot[color=magenta,samples=100]{-x - 1 - 3*e^x};
-			\foreach \n in {\ymin,-1.8,...,\ymax}
-			\addplot[blue,quiver={u={1/sqrt(1+((y+1.1)*(y-1.1)*(y+1)*(y+1))^2)},v={((y+1.1)*(y-1.1)*(y+1)*(y+1))/sqrt(1+((y+1.1)*(y-1.1)*(y+1)*(y+1))^2)},scale arrows=0.5},->,samples=2*\xmax + 1,]{\n};
+			\foreach \n in {\ymin,...,\ymax}
+			\addplot[blue,quiver={u={1/sqrt(1+(\eqtn)^2)},v={(\eqtn)/sqrt(1+(\eqtn)^2)},scale arrows=0.5},->,samples=2*\xmax + 1,]{\n};
 		\end{axis}
 	\end{tikzpicture}
 \end{center}
