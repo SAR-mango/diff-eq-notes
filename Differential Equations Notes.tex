@@ -52,7 +52,7 @@ The integral curves represent specific solutions to the differential equation. I
 
 \subsection{Integration by Parts}
 If you have to integrate the product of an algebraic and a transcendental function like $xe^{x}$, you will probably need to integrate by parts. \textit{Choose the algebraic function for $u$, and the transcendental function for $v$.} Here's the formula, where $u'$ and $v'$ are the derivatives of $u$ and $v$ with respect to $t$:
-$$\int uv'dt = uv - \int vu'dt$$
+$$\int uv'dt = uv - \int u'vdt$$
 
 Let's do a quick example. Integrate:
 $$\int xe^{x}dx$$
@@ -61,7 +61,7 @@ $$\int xe^{x}dx$$
 
 \textit{Solution:}
 $$u = x,\; v = e^{x};\; u' = 1,\; v' = e^{x}$$
-$$(x)(e^{x}) - \int (e^{x})(1)dt$$
+$$(x)(e^{x}) - \int (1)(e^{x})dt$$
 \begin{center}
 	= \boxed{xe^{x} - e^{x} + c}
 \end{center}
