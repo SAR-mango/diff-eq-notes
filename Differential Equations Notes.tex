@@ -358,6 +358,7 @@ Let's look at the slope field of $y' = (y^{2} - 4)(y + 1)^{2}$ below:
 			ymax=\ymax+0.25]
 			\addplot[color=magenta,samples=10,domain=\xmin:\xmax]{2};
 			\addplot[color=magenta,samples=10,domain=\xmin:\xmax]{-2};
+			\addplot[color=magenta,samples=10,domain=\xmin:\xmax]{-1};
 			\foreach \n in {\ymin,-2.75,...,\ymax}
 			\addplot[blue,quiver={u={1/sqrt(1+(\eqtn)^2)},v={(\eqtn)/sqrt(1+(\eqtn)^2)},scale arrows=0.2},-,samples=21,]{\n};
 		\end{axis}
