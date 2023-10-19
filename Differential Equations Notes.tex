@@ -59,7 +59,8 @@ Let's do a quick example. Integrate:
 $$\int xe^{x}dx$$
 
 \textit{Solution:}
-$$u = x,\;v = e^{x}$$
+$$u = x,\; v = e^{x}$$
+$$\frac{du}{dt} = 1,\; $$
 $$\int xe^{x}dx = x\int e^{x}dx - \int \left(1\int e^{x}dx\right)dx$$
 $$= xe^{x} - \int (e^{x})dx$$
 \begin{center}
@@ -99,7 +100,7 @@ This is important. Let's say that $\int p(t)dt = q(t) + c$. Here's how we need t
 $$u(t) = e^{q(t) + c} = e^{q(t)}e^{c} = ce^{q(t)}$$
 
 Believe it or not, we are ready to tackle an example problem. Solve the following IVP:
-$$ty' + 2y = t^2 - t + 1,\;y(1) = \frac{1}{2}$$
+$$ty' + 2y = t^2 - t + 1,\; y(1) = \frac{1}{2}$$
 
 \textit{Solution:}
 $$y' + \frac{2}{t}y = t - 1 + \frac{1}{t}$$
@@ -125,14 +126,14 @@ Let's start by integrating both sides with respect to $x$:
 $$\int N(y)\frac{dy}{dx}dx = \int M(x)dx$$
 
 $y = y(x)$, so let's use a change of variable and then integrate:
-$$u = y(x),\;du = \frac{dy}{dx}dx = dy$$
+$$u = y(x),\; du = \frac{dy}{dx}dx = dy$$
 $$\int N(u)du = \int M(x)dx$$
 
 The above process is the mathematically correct way of solving the equation, but we can simply write:
 $$\int N(y)dy = \int M(x)dx$$
 
 Time for an example. Solve the following IVP and determine the interval of validity for the solution:
-$$y' = e^{-y}(2x - 4),\;y(5) = 0$$
+$$y' = e^{-y}(2x - 4),\; y(5) = 0$$
 
 \textit{Solution:}
 $$\frac{1}{e^{-y}}\frac{dy}{dx} = 2x - 4$$
@@ -187,11 +188,11 @@ We'll start by dividing the equation by $y^{n}$, which gives us:
 \end{equation}
 
 Let's use a substitution:
-$$v(x) = y^{1 - n},\;v'(x) = (1 - n)y^{-n}y'$$
+$$v(x) = y^{1 - n},\; v'(x) = (1 - n)y^{-n}y'$$
 
 Here's how we obtained $v'$ above:
 $$v' = \frac{dv}{dx} = \frac{dv}{dy}\frac{dy}{dx}$$
-$$\frac{dv}{dy} = (1 - n)y^{-n},\;\frac{dy}{dx} = y'$$
+$$\frac{dv}{dy} = (1 - n)y^{-n},\; \frac{dy}{dx} = y'$$
 
 Let's put our substitution to use, plugging it into (1):
 $$\frac{v'}{1 - n} + p(x)v = q(x)$$
@@ -201,11 +202,11 @@ We now have a linear differential equation, and after solving for $v$, we can pl
 \pagebreak
 
 Let's try an example. Solve the following IVP:
-$$6y' - 2y = xy^{4},\;y(0) = -2$$
+$$6y' - 2y = xy^{4},\; y(0) = -2$$
 
 \textit{Solution:}
 $$6y^{-4}y' - 2y^{-3} = x$$
-$$v = y^{-3},\;v' = -3y^{-4}y'$$
+$$v = y^{-3},\; v' = -3y^{-4}y'$$
 $$-2v' - 2v = x$$
 $$v' + v = -\frac{1}{2}x$$
 $$u(x) = e^{\int dx} = e^{x}$$
@@ -251,16 +252,16 @@ $$x\frac{dv}{dx} = F(v) - v$$
 $$\int \frac{1}{F(v) - v}dv = \int \frac{1}{x}dx$$
 
 It is best to learn the rest of the process through an example. Solve the following IVP:
-$$xy' = y(ln(y) - ln(x)),\;y(1) = 4,\;x > 0$$
+$$xy' = y(ln(y) - ln(x)),\; y(1) = 4,\; x > 0$$
 
 \textit{Solution:}
 $$y' = \frac{y}{x}ln\left(\frac{y}{x}\right)$$
 $$v = \frac{y}{x}$$
-$$y = xv,\;y' = v + xv'$$
+$$y = xv,\; y' = v + xv'$$
 $$v + xv' = vln(v)$$
 $$x\frac{dv}{dx} = vln(v) - v$$
 $$\int \frac{1}{x}dx = \int \frac{1}{v(ln(v) - 1)}dv$$
-$$u = ln(v) - 1,\;du = \frac{1}{v}$$
+$$u = ln(v) - 1,\; du = \frac{1}{v}$$
 $$ln(x) = \int \frac{1}{u}du = ln(u) + c$$
 $$ln(x) = ln(ln(v) - 1) + c$$
 $$x = c(ln(v) - 1)$$
@@ -279,7 +280,7 @@ This is the last substitution we will learn. We'll solve equations of the form:
 $$y' = G(ax + by)$$
 
 We will use the substitution:
-$$v = ax + by,\;v' = a + by'$$
+$$v = ax + by,\; v' = a + by'$$
 
 Rewriting $v'$:
 $$y' = \frac{v' - a}{b}$$
@@ -293,11 +294,11 @@ $$\frac{dv}{dx} = bG(v) + a$$
 $$\int dx = \int \frac{1}{bG(v) + a}dv$$
 
 Let's do an example. Solve the following IVP:
-$$y' - (4x - y + 1)^{2} = 0,\;y(0) = 2$$
+$$y' - (4x - y + 1)^{2} = 0,\; y(0) = 2$$
 
 \textit{Solution:}
 $$y = (4x - y + 1)^{2}$$
-$$v = 4x - y + 1,\;v' = 4 - y'$$
+$$v = 4x - y + 1,\; v' = 4 - y'$$
 $$y' = 4 - v'$$
 $$4 - v' = v^{2}$$
 $$v' = \frac{dv}{dx} = 4 - v^{2}$$
@@ -306,7 +307,7 @@ $$\int dx = \int \frac{1}{4 - v^{2}}dv$$
 We need to do a partial fraction decomposition:
 $$\frac{1}{4 - v^{2}} = \frac{a}{2 + v} + \frac{b}{2 - v} = \frac{a}{2 + v}\cdot\frac{2 - v}{2 - v} + \frac{b}{2 - v}\cdot\frac{2 + v}{2 + v}$$
 $$2a - av + 2b + bv = 1$$
-$$bv - av = 0,\;2a + 2b = 1$$
+$$bv - av = 0,\; 2a + 2b = 1$$
 $$a = b$$
 $$2a + 2(a) = 1$$
 $$a = b = \frac{1}{4}$$
@@ -314,7 +315,7 @@ $$\frac{1}{4 - v^{2}} = \frac{1}{8 + 4v} + \frac{1}{8 - 4v}$$
 
 Resuming our original problem:
 $$x = \int \frac{1}{8 + 4v}dv + \int \frac{1}{8 - 4v}dv$$
-$$u = 8 + 4v,\;du = 4;\;w = 8 - 4v,\;dw = -4$$
+$$u = 8 + 4v,\; du = 4;\; w = 8 - 4v,\; dw = -4$$
 $$x = \frac{1}{4}\int \frac{1}{u}du - \frac{1}{4}\int \frac{1}{w}dw$$
 $$4x = ln(u) - ln(w) + c = ln\left(\frac{u}{w}\right) + c$$
 $$e^{4x} = e^{ln(\frac{u}{w}) + c} = e^{c}e^{ln(\frac{u}{w})} = ce^{ln(\frac{u}{w})} = c\frac{u}{w}$$
