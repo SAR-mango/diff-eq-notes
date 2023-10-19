@@ -407,4 +407,33 @@ We can represent all of this information in a neat and compact fashion using a \
 \end{center}
 
 What does the phase line tell us? Notice the points at $-2$, $-1$, and $2$ – these are the equilibrium solutions of our differential equation. Then look at the arrows beside each point. They simply tell you which direction you would move if you were nudged towards the arrow.
+
+With all of this in mind, let's do an example. Using the information from the phase line below, determine all critical points and propose a differential equation that has those critical points:
+
+\begin{center}
+	\begin{tikzpicture}
+		\def\xmin{-3} \def\xmax{3}
+		\def\ymin{0} \def\ymax{0}
+		\begin{axis}[
+			axis x line=center,
+			axis y line=none,
+			xtick={\xmin,\xmin+1,...,\xmax},
+			xticklabels={},
+			extra x ticks={\xmin,\xmax},
+			xlabel={$y$},
+			xlabel style={right},
+			xmin=\xmin-0.5,
+			xmax=\xmax+0.5,
+			ymin=\ymin-0.5,
+			ymax=\ymax+0.5]
+			\node[label={270:{$-2$}},circle,draw=black,line width=1mm,inner sep=0pt,minimum size=1mm] at(-2,0){};
+			\node[label={270:{$2$}},circle,draw=black,line width=1mm,inner sep=0pt,minimum size=1mm] at(2,0){};
+			\node[label={270:{$-1$}},circle,draw=black,line width=1mm,inner sep=0pt,minimum size=1mm] at(-1,0){};
+			\node[single arrow,draw,fill=black,minimum height=0mm,minimum width=0mm,inner sep=0pt,single arrow head extend=1.5mm] at(2.65,0){};
+			\node[single arrow,left,draw,fill=black,minimum height=0mm,minimum width=0mm,inner sep=0pt,single arrow head extend=1.5mm,shape border rotate=180] at(0.5,0){};
+			\node[single arrow,left,draw,fill=black,minimum height=0mm,minimum width=0mm,inner sep=0pt,single arrow head extend=1.5mm,shape border rotate=180] at(-1.55,0){};
+			\node[single arrow,left,draw,fill=black,minimum height=0mm,minimum width=0mm,inner sep=0pt,single arrow head extend=1.5mm,shape border rotate=180] at(-2.55,0){};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
 \end{document}
