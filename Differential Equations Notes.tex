@@ -3,17 +3,61 @@
 \maketitle
 
 \begin{center}
-	MATH 4B, UC Santa Barbara
+	MATH 4B \\
+	UC Santa Barbara
 \end{center}
 \setstretch{1.25}
+%
+%\section*{Preface}
+%The first time I took differential equations, I failed the class. I was perplexed by the crazy mess of symbols and the ``obvious'' steps that were skipped in most of the materials I was using. It seemed like magic was the only solution to any differential equation.
+%
+%Before retaking the course, I spent a month teaching myself everything while compiling it all into these notes. To learn, I primarily used \href{https://tutorial.math.lamar.edu}{Paul's Online Math Notes} – an invaluable resource. My notes are based on Paul's, and several examples are taken from there as well. However, my explanations of concepts and solutions for example problems are written in my own words. Generally, I am quite verbose and tend to show steps that many may consider trivial. I find this helpful, and I hope others do too.
+\tableofcontents
+
+\pagebreak
 
 \section{Tools for Differential Equations}
+\subsection{What Is a Differential Equation?}
+A \textbf{differential equation} is simply an equation that involves derivatives. Differential equations exist because it is often easiest to express one process as a function of the \textit{rate} of some other process. Here are examples of some differential equations:
+\begin{center}
+	\begin{minipage}{0.5\textwidth}
+		$$\frac{dy}{dx} = x + y$$
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		$$ty'' = y^{2} + 2y' + y + t$$
+	\end{minipage}
+\end{center}
+
+We are only going to talk about \textit{ordinary} differential equations. \textit{Partial} differential equations contain partial derivatives and are generally quite difficult to solve. Another entire course is often dedicated to partial differential equations. The $\partial$ symbol refers to a partial derivative, as opposed to the $d$ we are used to for ordinary derivatives.
+
+\subsection{General Solutions to Differential Equations}
+A \textbf{solution} to a differential equation is any function that satisfies the differential equation when plugged in. There are often multiple solutions to a differential equation. Consider the differential equation:
+$$y' = x + y$$
+
+A solution to this differential equation would be of the form $y = f(x)$. In this case, the \textbf{general solution} is $y = -x - 1 + ce^{x}$, where $c$ is any constant.
+
+We can verify that the general solution above is indeed a solution to the differential equation. Let's plug our solution into the original differential equation:
+$$(-x - 1 + ce^{x})' = x + (-x - 1 + ce^{x})$$
+$$\frac{d}{dx}(-x - 1 + ce^{x}) = x + (-x - 1 + ce^{x})$$
+$$-1 + ce^{x} = -1 + ce^{x}$$
+
+The equality is true, so our solution is indeed correct.
+
+\subsection{Initial Value Problems and Particular Solutions}
+We will often need to find a particular solution of a differential equation based on an initial value we were given. This is called an \textbf{initial value problem} (commonly abbreviated as \textbf{IVP}). Let's use the same example as above, but add an initial condition $y(0) = 4$.
+
+We know that our general solution is $y = -x - 1 + ce^{x}$, so all we need to do is plug in our initial values to solve for $c$:
+$$(4) = -(0) - 1 + ce^{(0)}$$
+$$c = 5$$
+
+So we have a particular solution $y = -x - 1 + 5e^{x}$ that satisfies the initial condition $y(0) = 4$.
+
 \subsection{Direction Fields}
-The graph below is a \textbf{direction field} (or \textbf{slope field}) of the differential equation $\frac{dy}{dx} = x + y$. The magenta-colored lines represent a set of \textbf{integral curves} (or \textbf{solution curves}).
+The graph below is a \textbf{direction field} (or \textbf{slope field}) of the differential equation $\dfrac{dy}{dx} = x + y$. The magenta-colored lines represent a set of \textbf{integral curves} (or \textbf{solution curves}).
 
-Each blue arrow represents the slope, $\frac{dy}{dx}$, at its tail. In other words, the slope attained when plugging the point of the tail into the differential equation. This is useful because it showcases the behavior of the differential equation across a wide range of $x$ and $y$ values.
+The slope of each blue segment is attained by plugging the point of the tail of the segment into the differential equation. This is useful because it shows the behavior of the differential equation across a wide range of input values.
 
-The integral curves represent specific solutions to the differential equation. In this case, the general solution is $y = -x - 1 + ce^x$, where $c$ is a constant. Several solutions have been plotted, each with a different value of $c$. Note that the integral curves always flow tangent to the slope arrows.
+The integral curves represent particular solutions to the differential equation. As we saw in the two previous sections, the general solution is $y = -x - 1 + ce^{x}$, where $c$ is a constant. Several solutions have been plotted, each with a different value of $c$. Note that the integral curves always flow tangent to the slope segments.
 
 \begin{center}
 	\begin{tikzpicture}
@@ -57,8 +101,6 @@ $$\int uv'dt = uv - \int u'vdt$$
 Let's do a quick example. Integrate:
 $$\int xe^{x}dx$$
 
-\pagebreak
-
 \textit{Solution:}
 $$u = x,\; v = e^{x};\; u' = 1,\; v' = e^{x}$$
 $$(x)(e^{x}) - \int (1)(e^{x})dt$$
@@ -66,15 +108,21 @@ $$(x)(e^{x}) - \int (1)(e^{x})dt$$
 	= \boxed{xe^{x} - e^{x} + c}
 \end{center}
 
+\pagebreak
+
 \section{First-Order Differential Equations}
-\subsection{Linear Equations}
-In this section we are going to solve differential equations of the form: $$\frac{dy}{dt} + p(t)y(t) = g(t)$$
+This chapter focuses on first-order differential equations, which means that we will be dealing with differential equations that contain no more than a first derivative.
+\subsection{Linear Equations} \label{linear equations}
+In this section, we are going to solve differential equations of the form:
+$$\frac{dy}{dt} + p(t)y(t) = g(t)$$
 
-Let's start by multiplying everything by a function $u(t)$, called the \textbf{integrating factor}: $$u(t)\frac{dy}{dt} + u(t)p(t)y(t) = u(t)g(t)$$
+Let's start by multiplying everything by a function $u(t)$, called the \textbf{integrating factor}:
+$$u(t)\frac{dy}{dt} + u(t)p(t)y(t) = u(t)g(t)$$
 
-We'll change $\frac{dy}{dt}$ to $y'(t)$, and we'll assume that $u(t)p(t)=u'(t)$: $$y'(t)u(t) + u'(t)y(t) = u(t)g(t)$$
+We'll rename $\dfrac{dy}{dt}$ to $y'(t)$, and we'll assume that $u(t)p(t)=u'(t)$:
+$$y'(t)u(t) + u'(t)y(t) = u(t)g(t)$$
 
-On the left side, we merely have the product rule in action. We can thus rewrite the equation: $$(y(t)u(t))' = u(t)g(t)$$
+Applying the product rule (in reverse) to the left side, we can rewrite the equation: $$(y(t)u(t))' = u(t)g(t)$$
 
 Let's integrate:
 $$\int (y(t)u(t))'dt = \int u(t)g(t)dt$$
@@ -128,7 +176,7 @@ $y = y(x)$, so let's use a change of variable and then integrate:
 $$u = y(x),\; du = \frac{dy}{dx}dx = dy$$
 $$\int N(u)du = \int M(x)dx$$
 
-The above process is the mathematically correct way of solving the equation, but we can simply write:
+The above process is the mathematically correct way of solving the equation, but for all intents and purposes we can skip all of that and just write:
 $$\int N(y)dy = \int M(x)dx$$
 
 Time for an example. Solve the following IVP and determine the interval of validity for the solution:
@@ -177,6 +225,87 @@ Here's what that quadratic $x^{2} - 4x - 4$ looks like. The roots are $2 \pm 2\s
 
 We can't take the natural log of 0 or a negative number. So the possible intervals of validity are $x = (-\infty, 2 - 2\sqrt{2})$ or $x = (2 + 2\sqrt{2}, \infty)$. We need to select the interval that contains our initial condition, so in this case, just \boxed{x = (2 + 2\sqrt{2}, \infty)}.
 
+\subsection{The Method of Undetermined Coefficients}
+Though this method may seem complicated at first, it can save valuable time after a little practice. Consider the first-order linear differential equation:
+\begin{equation} \label{uceq1}
+	y' - y = sin(2t)
+\end{equation}
+
+Try to solve this using what we learned in \hyperref[linear equations]{Section 2.1}. You will need to do some nasty integrals. Fortunately, there is another method – called \textbf{undetermined coefficients} – that will simplify the process greatly. It relies on the concepts of \textit{linearity} and \textit{superposition}.
+
+Let's pause for a moment and discuss what we are trying to do. Imagine that we have an equation for a line that satisfies $y(0) = 0$, called a \textbf{homogeneous equation}. This would be the general equation for a line that passes through the origin. We'll use $Y_{H}$ to denote that this is a homogeneous equation:
+$$Y_{H} = mx$$
+
+We want to find the equation of a line that satisfies $y(0) = n$, where $n$ is nonzero. Let's say we want $n = 2$. $y(0) = 2$ would obviously be a particular solution to that equation, so let's call that $Y_{P}$:
+$$Y_{P} = 2$$
+
+All we need to do to find an equation for a line that passes through $(0, 2)$ is add the particular solution to the homogeneous solution:
+$$y(x) = Y_{H} + Y_{P} = mx + 2$$
+
+Geometrically, all we are doing is shifting our line up by 2 so it contains the solution that we want it to contain. We have the exact same goal with \hyperref[uceq1]{Equation (1)}.
+
+Let's find the associated homogeneous equation for \hyperref[uceq1]{Equation (1)}. To do this, we rewrite it such that the sum of all functions of $t$ is equal to 0:
+$$y' - y = 0$$
+
+This is a separable equation that is easy to solve. The solution is:
+$$Y_{H} = ce^{t}$$
+
+Now we need a particular solution $Y_{P}$ to \hyperref[uceq1]{Equation (1)}, and we are going to have to make an educated guess. Let's think about it: a function subtracted from its derivative is equal to a sine term. Because we have a function \textit{as well as its derivative} on the left side, the function must contain a sine \textit{and} a cosine in order for the cosines to cancel out. We just don't know the coefficients of these sine and cosine terms, hence the name \textit{undetermined coefficients}. Also, regardless of how many times we take the derivative of $sin(ct)$, the $c$ will always remain inside the parentheses. So here's our educated guess:
+$$Y_{P} = Asin(2t) + Bcos(2t)$$
+
+Before plugging it into \hyperref[uceq1]{Equation (1)}, let's find its derivative:
+$$Y_{P}' = 2Acos(2t) - 2Bsin(2t)$$
+
+Now we can plug it in:
+$$(2Acos(2t) - 2Bsin(2t)) - (Asin(2t) + Bcos(2t)) = sin(2t)$$
+
+Let's expand and factor out the sine and cosine terms on the left side:
+$$(-2B - A)sin(2t) + (2A - B)cos(2t) = 1sin(2t) + 0cos(2t)$$
+
+We have now arrived at a system of equations for our constants $A$ and $B$, and the 1 and 0 coefficients added on the right should emphasize this:
+$$-2B - A = 1,\; 2A - B = 0$$
+
+This can be solved quite easily; the solutions are $A = -\dfrac{1}{5},\; B = -\dfrac{2}{5}$. So we now have a particular solution:
+$$Y_{P} = -\frac{1}{5}sin(2t) -\frac{2}{5}cos(2t)$$
+
+Again, we obtain our final solution to \hyperref[uceq1]{Equation (1)} by adding the homogeneous and particular solutions:
+$$y(t) = ce^{t} -\frac{1}{5}sin(2t) -\frac{2}{5}cos(2t)$$
+
+Verifying this solution is fairly simple, so it is left to the reader.
+
+It is finally time to do an example. Find the general solution to the following equation:
+$$y' + 2y - sin(t) - 2cos(t) = 1$$
+
+\textit{Solution:}
+
+Solving the associated homogeneous equation:
+$$y' + 2y = 0$$
+$$\frac{dy}{dt} = -2y$$
+$$\int dt = -\frac{1}{2}\int \frac{1}{y}dy$$
+$$t + c = -\frac{1}{2}ln(y)$$
+$$ln(y) = -2t + c$$
+$$Y_{H} = ce^{-2t}$$
+
+Rewriting the original equation:
+$$y' + 2y = sin(t) + 2cos(t) + 1$$
+
+Guess for form of $Y_{P}$ (note the $C$, since the original equation contains a 1):
+$$y = Asin(t) + Bcos(t) + C$$ \vspace{-2.5em}
+$$y' = Acos(t) - Bsin(t)$$
+
+Substituting into original equation:
+$$(Acos(t) - Bsin(t)) + 2(Asin(t) + Bcos(t) + C) = sin(t) + 2cos(t) + 1$$
+
+Expanding, factoring, and setting up a system for undetermined coefficients:
+$$(2A - B)sin(t) + (A + 2B)cos(t) + 2C = 1sin(t) + 2cos(t) + 1$$
+$$2A - B = 1,\; A + 2B = 2,\; 2C = 1$$
+$$A = \frac{4}{5},\; B = \frac{3}{5},\; C = \frac{1}{2}$$
+$$Y_{P} = \frac{4}{5}sin(t) + \frac{3}{5}cos(t) + \frac{1}{2}$$
+$$y(t) = Y_{H} + Y_{P}$$
+\begin{center}
+	\boxed{y(t) = ce^{-2t} + \frac{4}{5}sin(t) + \frac{3}{5}cos(t) + \frac{1}{2}}
+\end{center}
+
 \subsection{Bernoulli Equations}
 This is a fun section. We are going to solve equations of the form:
 $$y' + p(x)y = q(x)y^{n}$$
@@ -197,8 +326,6 @@ Let's put our substitution to use, plugging it into (1):
 $$\frac{v'}{1 - n} + p(x)v = q(x)$$
 
 We now have a linear differential equation, and after solving for $v$, we can plug it back into our substitution to solve for $y$.
-
-\pagebreak
 
 Let's try an example. Solve the following IVP:
 $$6y' - 2y = xy^{4},\; y(0) = -2$$
@@ -243,7 +370,7 @@ We'll change $\frac{dy}{dx}$ to $y'$, and we'll simplify the right side:
 	y' = v + xv'
 \end{equation}
 
-Let's now plug our substitution into the original equation. (2) goes on the right side of (1), and (3) goes on the left side of (1):
+Let's now plug our substitution into the original equation, (1). (2) goes on the right side of (1), and (3) goes on the left side of (1):
 $$v + xv' = F(v)$$
 
 Though it may be hard to tell, we have separable equation. Let's solve it:
@@ -274,6 +401,8 @@ $$c = \frac{4}{e}$$
 	\boxed{y(x) = xe\left(\frac{4}{e}\right)^{x}}
 \end{center}
 
+\pagebreak
+
 \subsection{Substitutions, Part 2}
 This is the last substitution we will learn. We'll solve equations of the form:
 $$y' = G(ax + by)$$
@@ -281,7 +410,7 @@ $$y' = G(ax + by)$$
 We will use the substitution:
 $$v = ax + by,\; v' = a + by'$$
 
-Rewriting $v'$:
+Rewriting $y'$ in terms of $v'$:
 $$y' = \frac{v' - a}{b}$$
 
 We'll plug this into the original equation and simplify things:
@@ -371,8 +500,6 @@ This raises an important question, however. What if we are stuck on an equilibri
 
 $\bm{y = 2}$: The slope above $y = 2$ is always positive, so if we are pushed upwards from $y = 2$ we will go flying up and away, never to return. Similarly, the slope below $y = 2$ is always negative, so if we are pushed slightly downwards off of $y = 2$ we will go down – again, never to return. Because we never return to $y = 2$ if we are nudged off in either direction, $y = 2$ is called an \textbf{unstable} equilibrium solution.
 
-\pagebreak
-
 $\bm{y = -2}$: The slope above $y = -2$ is always negative, so if we are pushed upwards from $y = -2$ we will be pushed back down to $y = -2$. The slope below $y = -2$ is always positive, so if we are pushed below $y = -2$ we will be brought back up to $y = -2$. Because we always return to $y = -2$ if we are nudged off in either direction, $y = -2$ is called a \textbf{stable} equilibrium solution.
 
 $\bm{y = -1}$: The slope above $y = -1$ is always negative, so if we are pushed upwards from $y = -1$ we will return down to $y = -1$. The slope below $y = -1$ is \textit{also} always negative, so if we are pushed below $y = -1$ we will go down and never return. Because we return to $y = -1$ if we are nudged off in \textit{only one} direction, $y = -1$ is called a \textbf{semi-stable} equilibrium solution.
@@ -408,6 +535,8 @@ We can represent all of this information in a neat and compact fashion using a \
 
 What does the phase line tell us? Notice the points at $-2$, $-1$, and $2$. These are the equilibrium solutions of our differential equation. Then look at the arrows beside each point. They simply tell you which direction you would move if you were nudged towards the arrow.
 
+Note that a differential equation need not contain equilibrium solutions of all kinds of stability, and it need not contain equilibrium solutions at all.
+
 Let's practice reading a phase line. Using the information from the phase line below, determine all critical points and indicate their stability:
 
 \begin{center}
@@ -438,14 +567,90 @@ Let's practice reading a phase line. Using the information from the phase line b
 \end{center}
 
 \textit{Solution:}
+	\begin{itemize}[itemsep=0em,topsep=0em]
+		\item $y = -3$ is an unstable equilibrium solution.
+		\item $y = 0$ is a stable equilibrium solution.
+		\item $y = 2$ is a semi-stable equilibrium solution.
+	\end{itemize}
+\vskip 0.75em
 
-Critical points at $y = -3$, $y = 0$, and $y = 2$.
+Let's do a more comprehensive example. For the differential equation below, determine all critical points and classify them by their stability. Draw a phase line to represent your answer.
+$$y' = y(y + 1)(y + 2)(y + 4)^{3}$$
 
-$y = -3$ is unstable, $y = 0$ is stable, and $y = 2$ is semi-stable.
+\textit{Solution:}
 
-Note that a differential equation need not contain equilibrium solutions of all kinds of stability, and it need not contain equilibrium solutions at all.
+There are critical points at $y = -4,\; -2,\; -1,$ and $0$. To determine the stability of each point, we must plug $y$ values on each side of the critical point into the differential equation, being careful not to cross another critical point. This is summarized below with interval notation.
+\begin{itemize}[itemsep=0em,topsep=0.5em]
+	\item To determine the stability of $y = -4$, we should plug in $(-\infty ,-4)$ and $(-4,-2)$:
+		\subitem $y'(-5) = 60,\; y'(-3) = -6$ so $y = -4$ is stable.
+	\item To determine the stability of $y = -2$, we should plug in $(-4,-2)$ and $(-2,-1)$:
+		\subitem $y'(-3) = -6,\; y'(-1.5) = 5.86$ so $y = -2$ is unstable.
+	\item To determine the stability of $y = -1$, we should plug in $(-2,-1)$ and $(-1,0)$:
+		\subitem $y'(-1.5) = 5.86,\; y'(-0.5) = -16.08$ so $y = -1$ is stable.
+	\item To determine the stability of $y = 0$, we should plug in $(-1,0)$ and $(0,\infty )$:
+		\subitem $y'(-0.5) = -16.08,\; y'(1) = 750$ so $y = 0$ is unstable.
+\end{itemize}
+This is the corresponding phase line:
+\begin{center}
+	\begin{tikzpicture}
+		\def\xmin{-4} \def\xmax{0}
+		\def\ymin{0} \def\ymax{0}
+		\begin{axis}[
+			axis x line=center,
+			axis y line=none,
+			xtick={\xmin,\xmin+1,...,\xmax},
+			xticklabels={},
+			extra x ticks={},
+			xlabel={$y$},
+			xlabel style={right},
+			xmin=\xmin-0.5,
+			xmax=\xmax+0.5,
+			ymin=\ymin-0.5,
+			ymax=\ymax+0.5]
+			\node[label={270:{$-4$}},circle,draw=black,line width=1mm,inner sep=0pt,minimum size=1mm] at(-4,0){};
+			\node[label={270:{$-2$}},circle,draw=black,line width=1mm,inner sep=0pt,minimum size=1mm] at(-2,0){};
+			\node[label={270:{$-1$}},circle,draw=black,line width=1mm,inner sep=0pt,minimum size=1mm] at(-1,0){};
+			\node[label={270:{$0$}},circle,draw=black,line width=1mm,inner sep=0pt,minimum size=1mm] at(0,0){};
+			\node[label={270:{$2$}},circle,draw=black,line width=1mm,inner sep=0pt,minimum size=1mm] at(2,0){};
+			\node[single arrow,draw,fill=black,minimum height=0mm,minimum width=0mm,inner sep=0pt,single arrow head extend=1.5mm,shape border rotate=0] at(-4.25,0){};
+			\node[single arrow,draw,fill=black,minimum height=0mm,minimum width=0mm,inner sep=0pt,single arrow head extend=1.5mm,shape border rotate=180] at(-3.04,0){};
+			\node[single arrow,draw,fill=black,minimum height=0mm,minimum width=0mm,inner sep=0pt,single arrow head extend=1.5mm,shape border rotate=0] at(-1.4,0){};
+			\node[single arrow,draw,fill=black,minimum height=0mm,minimum width=0mm,inner sep=0pt,single arrow head extend=1.5mm,shape border rotate=180] at(-0.5,0){};
+			\node[single arrow,draw,fill=black,minimum height=0mm,minimum width=0mm,inner sep=0pt,single arrow head extend=1.5mm,shape border rotate=0] at(0.35,0){};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
 
-Let's do a more comprehensive example. For the differential equation below, determine all equilibrium points and classify them by their stability. Draw a phase line to represent your answer:
-$$$$
+\pagebreak
+
+\subsection{Linearization of Autonomous Equations}
+It is best to preface this section with an example. Solve
+
+It is not always practical – algebraically or otherwise – to find an analytical solution to a differential equation. But in the case of autonomous equations, we can \textit{linearize} the equation at each equilibrium solution.
+
+More specifically, we are going to do the following:
+\begin{enumerate}
+	\item Find the equilibrium solutions of an autonomous differential equation.
+	\item Find the slope of a line \textit{tangent} to the
+\end{enumerate}
+
+\section{Second-Order Differential Equations}
+\subsection{Real, Distinct Roots}
+
+\subsection{Complex Roots}
+
+\subsection{Repeated Roots}
+
+\subsection{Reduction of Order}
+
+\subsection{Fundamental Sets and the Wronskian}
+
+\subsection{Nonhomogeneous Equations}
+
+\subsection{Mechanical Vibrations}
+
+\subsection{Linearization of Second-Order Equations}
+
+\section{Systems of Differential Equations}
 
 \end{document}

@@ -9,10 +9,9 @@
 \usepackage{titlesec}               % for custom title/section/subsection formats
 \usepackage{enumitem}               % for numbered lists
 \usepackage{graphicx}               % for including images and other graphics
-\usepackage{hyperref}               % for hyperlinks
 \usepackage[skip=0.15em]{caption}   % for figure captions
 \usepackage[font=normal]{subfig}    % for figures and subfigures
-\usepackage{xcolor}                 % for coloring and highlighting text
+\usepackage[usenames,dvipsnames]{xcolor}	% for coloring and highlighting text
 \usepackage{pgfplots}               % for slope fields
 \usetikzlibrary{calc}               % for slope fields
 \pgfplotsset{compat=1.18}           % for slope fields
@@ -20,6 +19,14 @@
 \usepackage{chngcntr}               % for managing equation numbering
 \usepackage{bm}
 \usetikzlibrary{shapes.arrows}
+\usepackage[subfigure]{tocloft}
+\usepackage{hyperref}               % for hyperlinks
+
+\renewcommand{\cftbeforetoctitleskip}{0em}
+\setlength{\cftaftertoctitleskip}{0em}
+\setlength{\cftbeforesecskip}{0em}
+\renewcommand{\cfttoctitlefont}{\section*}
+\renewcommand\contentsname{Table of Contents}
 
 \counterwithin*{equation}{subsection}
 
@@ -47,15 +54,16 @@
 		\lineskip 0.5em 
 		\begin{tabular}[t]{c}
 			\@author
-		\end{tabular}\par} – 
+		\end{tabular}\par}
+	\vskip 0.25em 
 	{\large \monthyeardate\today}
 	\par\endgroup
 	\vskip 1em
 }
 \makeatother
 
-\titleformat{\section}{\normalfont\scshape}{\color{blue}\textbf\thesection}{0em{\textbf{\color{blue}{ – }}}}{\color{blue}\textbf}
-\titleformat{\subsection}{\normalfont\scshape}{\color{magenta}\thesubsection}{0em{\color{magenta}{: }}}{\color{magenta}}
+\titleformat{\section}{\normalfont\scshape}{\color{Mahogany}\textbf\thesection}{0em{\textbf{\color{Mahogany}{ – }}}}{\color{Mahogany}\textbf}
+\titleformat{\subsection}{\normalfont\scshape}{\color{magenta}\thesubsection}{0em{\color{magenta}{: }}}{\color{magenta}\textnormal}
 % if you don't like the italicized subsections, change all the textit commands
 % in the line above to textbf or whatever else you prefer
 \titlespacing*{\section}{0pt}{1.5em}{0.5em}
